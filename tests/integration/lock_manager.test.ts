@@ -2,9 +2,9 @@ import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest';
 import pg from 'pg';
 import { AdvisoryLockManager } from '../../src/core/ingestion/lock_manager.js';
 
-const DB_URL = process.env['INTEGRATION_DATABASE_URL'];
+const DB_URL = process.env['INTEGRATION_DATABASE_URL'] ?? process.env['DATABASE_URL'];
 const pool = DB_URL
-  ? new pg.Pool({ connectionString: DB_URL, connectionTimeoutMillis: 2000 })
+  ? new pg.Pool({ connectionString: DB_URL, connectionTimeoutMillis: 5000 })
   : null;
 const manager = pool ? new AdvisoryLockManager(pool) : null;
 let dbAvailable = false;
