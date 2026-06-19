@@ -7,7 +7,7 @@ export interface SignedPayload {
   deviceId: string;
   timestamp: number;
   nonce: string;
-  metrics: Record<string, number>;
+  metrics: Record<string, number | string>;
   signature: string;
 }
 
