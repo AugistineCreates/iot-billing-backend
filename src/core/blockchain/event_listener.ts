@@ -55,7 +55,9 @@ export class LedgerEventSynchronizer {
       where: { syncId: SYNC_ID },
     });
     this.lastSyncedLedger = state?.lastSyncedLedger ?? this.startingLedger;
-    console.log(`LedgerEventSynchronizer: loaded lastSyncedLedger=${String(this.lastSyncedLedger)}`);
+    console.log(
+      `LedgerEventSynchronizer: loaded lastSyncedLedger=${String(this.lastSyncedLedger)}`,
+    );
 
     this.intervalHandle = setInterval(() => {
       void this.pollLatestLedger();
