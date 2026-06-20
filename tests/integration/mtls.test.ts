@@ -56,8 +56,7 @@ describe('mTLS Gateway Verifier Integration', () => {
     });
 
     verifier = new MtlsGatewayVerifier();
-    // Allow verifier to connect DB
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await verifier.init();
   });
 
   afterAll(async () => {
@@ -141,22 +140,22 @@ describe('mTLS Gateway Verifier Integration', () => {
     try {
       fs.unlinkSync(keyFile);
     } catch (e) {
-      /* ignore */
+      void e;
     }
     try {
       fs.unlinkSync(csrFile);
     } catch (e) {
-      /* ignore */
+      void e;
     }
     try {
       fs.unlinkSync(crtFile);
     } catch (e) {
-      /* ignore */
+      void e;
     }
     try {
       fs.unlinkSync(extFile);
     } catch (e) {
-      /* ignore */
+      void e;
     }
 
     return cert;

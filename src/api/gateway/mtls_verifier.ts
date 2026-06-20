@@ -15,8 +15,8 @@ export class MtlsGatewayVerifier {
   private redis = getRedis();
   private pgClient?: pg.Client;
 
-  constructor() {
-    this.setupListenNotify().catch(console.error);
+  async init(): Promise<void> {
+    await this.setupListenNotify();
   }
 
   private async setupListenNotify(): Promise<void> {
