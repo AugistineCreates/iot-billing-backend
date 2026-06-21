@@ -11,6 +11,7 @@ import { registerAdminRoutes } from './routes/admin.js';
 import { registerTracingHooks } from './middleware/tracing.js';
 import { TelemetryNotificationListener, closeTimescalePool } from '../database/pool_manager.js';
 import { LedgerEventSynchronizer } from '../core/blockchain/event_listener.js';
+import { registerCircuitHealth } from './health.js';
 
 export async function buildApp(): Promise<FastifyInstance> {
   const env = getEnv();
